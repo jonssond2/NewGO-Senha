@@ -1,9 +1,7 @@
 public class Senha {
     private String conteudo;
 
-    public Senha(String conteudo) {
-        this.conteudo = conteudo;
-    }
+
 
     public boolean IsValid(String senhaCandidata) {
         //   String especiais[] = {"!", "@", "#", "$", "%", "&", "*", "(", ")", "{", "}", "?"};
@@ -35,6 +33,16 @@ public class Senha {
         return !(numMinusculas == 0 || numMaiusculas == 0 || numNumeros == 0 || numEspeciais == 0);
     }
 
+    public Senha(String conteudo) {
+        if(IsValid(conteudo)){
+            this.conteudo = conteudo;
+            System.out.println("Senha criada com sucesso.");
+        }
+        else {
+            System.out.println("Senha inválida. Por favor cumpra os requisitos mínimos.");
+        }
+    }
+
     public Int passwordStrength(String senha){
         int points;
         int extraPoints = 0;
@@ -43,10 +51,9 @@ public class Senha {
         } else if (senha.length() == 30) {
             points = 100;
         }
-        for (int i = 0; i < senha.length(); i++){
+        for (int i = 0; i < senha.length(); i++) {
             extraPoints++;
         }
-
     }
 
     public void setConteudo(java.lang.String conteudo) {
